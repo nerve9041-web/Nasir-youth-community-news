@@ -1,0 +1,44 @@
+name: Daily AI story draft
+
+on:
+  schedule:
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: daily-ai-story-draft
+  cancel-in-progress: false
+
+jobs:
+  draft:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out site
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Generate source-based draft
+        run: python automation/generate_daily_draft.py
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_MODEL: gpt-4.1-mini
+
+      - name: Open review pull request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: automation/daily-ai-story
+          delete-branch: true
+          commit-message: "Add daily AI story draft"
+          title: "Daily AI story draft for editorial review"
+          body: |
+            Review the draft and its linked source articles before merging. The site deploys to InfinityFree only after this pull request is merged.
+          add-paths: daily-posts.js

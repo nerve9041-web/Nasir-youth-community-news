@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+  <title id="title">Image unavailable</title>
+  <desc id="desc">A neutral placeholder indicating the image is missing.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f2f6fb"/>
+      <stop offset="100%" stop-color="#dfe7f2"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg)"/>
+  <rect x="120" y="120" width="960" height="560" rx="28" fill="#eef3f9" stroke="#9db0c7" stroke-width="4"/>
+  <path d="M360 470 L500 330 L620 440 L760 250 L950 470 L950 540 L360 540 Z" fill="#cad8e7"/>
+  <circle cx="410" cy="270" r="48" fill="#cad8e7"/>
+  <path d="M485 330 L590 240 L690 330" fill="none" stroke="#b8c8dc" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="470" y="545" width="260" height="20" rx="10" fill="#b8c8dc"/>
+  <text x="600" y="620" text-anchor="middle" font-size="38" font-family="Arial, Helvetica, sans-serif" fill="#546577" font-weight="700">Image unavailable</text>
+</svg>
