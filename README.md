@@ -94,10 +94,11 @@ The community submission form is frontend-only. It currently displays a confirma
 
 ## Automated story drafting
 
-This project includes GitHub Actions for daily drafting and deployment:
+This project can generate daily story drafts through GitHub Actions, but it does not publish news automatically:
 
-- `daily-draft.yml` generates daily AI-assisted story drafts from trusted RSS feeds
-- `deploy-infinityfree.yml` deploys the site after changes are pushed to `main`
+- `daily-draft.yml` runs daily and opens a pull request containing a draft based on configured trusted RSS feeds. An editor must review and merge it before it appears on the site.
+- `automation/sources.json` includes the Radio Tamazuj RSS feed. Add other trusted RSS feeds there only after confirming they work and are relevant.
+- `deploy-infinityfree.yml` deploys site changes after they are pushed to `main`; it does not publish articles independently.
 - Required secrets such as `OPENAI_API_KEY`, `FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD`, and `FTP_SERVER_DIR` must be configured in the GitHub repository settings
 
 Important:

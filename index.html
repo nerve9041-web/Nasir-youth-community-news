@@ -69,12 +69,9 @@ a:focus-visible,button:focus-visible { border-radius:2px; }
 
 /* Brand */
 .brand { display:flex; align-items:center; gap:11px; min-width:190px; }
-.brand-mark {
-  width:42px; height:42px; background:var(--blue); color:white;
-  display:grid; place-items:center;
-  font-family:var(--serif); font-weight:800; font-size:18px;
-  letter-spacing:-.1em; border-radius:var(--radius);
-  flex-shrink:0;
+.brand-logo {
+  display:block; width:42px; height:42px; object-fit:contain;
+  border-radius:var(--radius); flex-shrink:0;
 }
 .brand-text { display:flex; flex-direction:column; line-height:1.1; letter-spacing:.13em; }
 .brand-text strong { font-size:14px; }
@@ -110,6 +107,7 @@ nav a:hover, nav a.active { color:var(--ink); }
 
 /* ── HERO ─────────────────────────────────────────────── */
 .hero { background:var(--navy); color:white; overflow:hidden; position:relative; }
+section[id] { scroll-margin-top:105px; }
 .hero-grid {
   min-height:510px; display:grid; grid-template-columns:1.02fr .98fr;
   align-items:center; gap:50px; padding-top:35px; padding-bottom:45px;
@@ -378,41 +376,43 @@ nav a:hover, nav a.active { color:var(--ink); }
 
 /* ── FOOTER ───────────────────────────────────────────── */
 .site-footer {
-  background:#f1f5e9; color:#183c2a; padding:48px 0 0;
-  border-top:3px solid #d5a52f;
+  background:var(--navy); color:#f7f7f4; padding:58px 0 0;
+  border-top:3px solid var(--lime);
 }
 .footer-top {
-  display:grid; grid-template-columns:minmax(0,1.4fr) minmax(150px,.75fr) minmax(190px,1fr);
-  gap:clamp(28px,5vw,64px); padding-bottom:40px; align-items:start;
+  display:grid; grid-template-columns:minmax(0,1.25fr) minmax(145px,.65fr) minmax(280px,1fr);
+  gap:clamp(32px,5vw,72px); padding-bottom:48px; align-items:start;
 }
-.footer-brand-col p { font-size:12px; line-height:1.8; color:#526858; margin:12px 0 0; }
-.brand-footer .brand-mark { background:#28734a; }
-.brand-footer .brand-text strong { color:#183c2a; }
-.brand-footer .brand-text small { color:#526858; }
-.footer-nav { display:flex; flex-direction:column; align-items:flex-start; gap:8px; }
-.footer-heading { margin-bottom:5px; font-size:10px; letter-spacing:.14em; color:#28734a; text-transform:uppercase; }
-.footer-nav a { display:inline-flex; align-items:center; min-height:30px; font-size:12px; color:#254b35; }
-.footer-nav a:hover { color:#c65b22; }
-.footer-sources { display:flex; flex-direction:column; gap:10px; }
-.footer-sources strong { font-size:10px; letter-spacing:.14em; color:#28734a; text-transform:uppercase; }
-.footer-sources a { width:fit-content; font-size:11px; color:#254b35; text-decoration:underline; text-decoration-color:#d5a52f; text-underline-offset:3px; }
-.footer-sources a:hover { color:#c65b22; text-decoration-color:currentColor; }
+.footer-brand-col p { max-width:290px; font-size:14px; line-height:1.75; color:#c0cad7; margin:18px 0 0; }
+.footer-brand-col .footer-location { display:block; margin-top:6px; color:#8997a8; font-size:12px; }
+.brand-footer { min-width:0; }
+.brand-footer .brand-text strong { color:#fff; }
+.brand-footer .brand-text small { color:#aeb9c7; }
+.footer-nav { display:flex; flex-direction:column; align-items:flex-start; gap:7px; }
+.footer-heading,
+.footer-sources strong { display:block; margin:0 0 12px; font-size:10px; letter-spacing:.16em; color:var(--lime); text-transform:uppercase; }
+.footer-nav a { display:inline-flex; align-items:center; min-height:30px; font-size:12px; font-weight:600; color:#c0cad7; transition:color .2s var(--ease-out); }
+.footer-nav a:hover,
+.footer-sources a:hover { color:var(--lime); }
+.footer-sources { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0 20px; }
+.footer-sources strong { grid-column:1 / -1; }
+.footer-sources a {
+  display:flex; align-items:center; justify-content:space-between; gap:10px;
+  min-height:40px; border-bottom:1px solid rgba(255,255,255,.12);
+  font-size:11px; color:#c0cad7; transition:color .2s var(--ease-out), border-color .2s var(--ease-out);
+}
+.footer-sources a::after { content:"↗"; color:#8795a6; font-size:12px; }
+.footer-sources a:hover { border-color:rgba(201,243,106,.5); }
 .footer-bottom {
-  border-top:1px solid #d8c47e;
+  border-top:1px solid rgba(255,255,255,.16);
   display:flex; justify-content:space-between;
-  gap:16px; padding:17px 0; font-size:10px; color:#526858;
+  gap:16px; padding:19px 0; font-size:10px; color:#8997a8;
 }
 
-/* ── PAGE VIEWS ───────────────────────────────────────── */
+/* ── PAGE SECTIONS ────────────────────────────────────── */
 .hidden { display:none !important; }
-.page-section.hidden { display:none !important; }
-.page-section:not(.hidden) { animation:page-enter .36s var(--ease-out) both; }
-.page-context { border-bottom:1px solid var(--line); background:#eef2f7; }
-.page-context > .wrap { min-height:38px; display:flex; align-items:center; gap:10px; color:var(--muted); font-size:11px; }
-.page-context a { color:var(--blue); font-weight:800; }
-.page-context a:hover { text-decoration:underline; text-underline-offset:3px; }
-.page-context span:last-child { color:var(--ink); font-weight:700; }
-.page-view { min-height:60vh; padding-top:65px; padding-bottom:85px; }
+.page-view { scroll-margin-top:105px; padding-top:76px; padding-bottom:85px; }
+.listing-anchor { display:block; scroll-margin-top:105px; }
 .page-intro { max-width:700px; padding-bottom:36px; }
 .page-intro h1 { font-size:clamp(36px,5vw,55px); margin:15px 0; }
 .page-intro h1 em { color:var(--blue); }
@@ -582,10 +582,6 @@ nav a:hover, nav a.active { color:var(--ink); }
   margin-top:20px; line-height:1.7;
 }
 
-@keyframes page-enter {
-  from { opacity:0; transform:translateY(8px); }
-  to { opacity:1; transform:translateY(0); }
-}
 @keyframes overlay-enter {
   from { opacity:0; }
   to { opacity:1; }
@@ -626,8 +622,7 @@ nav a:hover, nav a.active { color:var(--ink); }
 }
 @media (max-width:1000px) {
   .footer-top { grid-template-columns:minmax(0,1fr) minmax(180px,.7fr); gap:30px 48px; }
-  .footer-sources { display:grid; grid-column:1 / -1; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px 20px; }
-  .footer-sources strong { grid-column:1 / -1; }
+  .footer-sources { grid-column:1 / -1; }
   .feature-grid { grid-template-columns:1fr 1fr; }
   .feature-grid .story-card:first-child { grid-column:span 2; }
   .story-grid { grid-template-columns:repeat(2,1fr); }
@@ -674,8 +669,7 @@ nav a:hover, nav a.active { color:var(--ink); }
   .investigation-visual  { height:220px; }
   .community-strip { grid-template-columns:1fr; gap:20px; }
   .footer-top { grid-template-columns:1fr; gap:28px; padding-bottom:28px; }
-  .footer-sources { grid-column:auto; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px 18px; }
-  .footer-sources strong { grid-column:1 / -1; }
+  .footer-sources { grid-column:auto; gap:0 18px; }
   .footer-bottom { align-items:flex-start; gap:8px; flex-direction:column; line-height:1.6; }
   .submit-layout { gap:28px; }
   .submit-sidebar { order:0; }
@@ -684,7 +678,7 @@ nav a:hover, nav a.active { color:var(--ink); }
   .form-group input, .form-group select { min-height:46px; }
   .footer-nav { gap:4px; }
   .footer-nav a { display:flex; align-items:center; min-height:40px; }
-  .page-view { padding-top:45px; }
+  .page-view { padding-top:52px; padding-bottom:60px; }
   .page-intro h1 { font-size:clamp(32px,9vw,44px); }
   .listing-tools { align-items:flex-start; flex-direction:column; }
   .search-panel, .article-panel { padding:28px 20px; }
@@ -725,8 +719,8 @@ nav a:hover, nav a.active { color:var(--ink); }
   <!-- HEADER / NAV -->
   <header class="site-header">
     <div class="wrap header-inner">
-      <a class="brand" href="#" data-view="home" aria-label="Nasir Youth Community home">
-        <span class="brand-mark" aria-hidden="true">NY</span>
+      <a class="brand" href="#home" data-view="home" aria-label="Nasir Youth Community home">
+        <img class="brand-logo" src="nasir_logo.svg" alt="">
         <span class="brand-text"><strong>NASIR</strong><small>YOUTH COMMUNITY</small></span>
       </a>
       <button class="menu-toggle" id="menuToggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mainNav">
@@ -748,21 +742,13 @@ nav a:hover, nav a.active { color:var(--ink); }
       </button>
     </div>
   </header>
-  <div class="page-context hidden" id="pageContext" aria-live="polite">
-    <div class="wrap">
-      <a href="#home" data-view="home">Home</a>
-      <span aria-hidden="true">/</span>
-      <span id="currentPageLabel"></span>
-    </div>
-  </div>
-
   <!-- ═══════════════════════════════════════════════════ -->
   <!-- HOME VIEW                                           -->
   <!-- ═══════════════════════════════════════════════════ -->
-  <main class="page-section" id="homeView">
+  <main id="homeView">
 
     <!-- Hero -->
-    <section class="hero" aria-label="Site introduction">
+    <section class="hero" id="home" aria-label="Site introduction">
       <div class="wrap hero-grid">
         <div class="hero-copy">
           <div class="eyebrow"><span class="live-dot" aria-hidden="true"></span> COMMUNITY JOURNALISM &amp; HISTORICAL RECORD</div>
@@ -890,12 +876,13 @@ nav a:hover, nav a.active { color:var(--ink); }
       </div>
     </section>
 
-  </main><!-- /#homeView -->
-
   <!-- ═══════════════════════════════════════════════════ -->
   <!-- LISTING VIEW (News / Investigations / Community)    -->
   <!-- ═══════════════════════════════════════════════════ -->
-  <main class="wrap page-view page-section hidden" id="listingView" aria-label="Story listing">
+  <section class="wrap page-view" id="listingView" aria-label="Story listing">
+    <span class="listing-anchor" id="news"></span>
+    <span class="listing-anchor" id="investigations"></span>
+    <span class="listing-anchor" id="community"></span>
     <div class="page-intro">
       <div class="eyebrow muted" id="listingEyebrow">THE NEWSROOM</div>
       <h1 id="listingTitle">Latest <em>news.</em></h1>
@@ -906,12 +893,12 @@ nav a:hover, nav a.active { color:var(--ink); }
       <span id="resultCount" aria-live="polite"></span>
     </div>
     <div class="story-grid" id="storyGrid" aria-label="Stories"></div>
-  </main>
+  </section>
 
   <!-- ═══════════════════════════════════════════════════ -->
   <!-- MEMORIAL VIEW                                       -->
   <!-- ═══════════════════════════════════════════════════ -->
-  <main class="wrap page-view page-section hidden" id="memorialView" aria-labelledby="memorialHeading">
+  <section class="wrap page-view" id="memorial" aria-labelledby="memorialHeading">
     <div class="page-intro">
       <div class="eyebrow muted">IN MEMORY</div>
       <h1 id="memorialHeading">Remembering those <em>we lost.</em></h1>
@@ -958,12 +945,12 @@ nav a:hover, nav a.active { color:var(--ink); }
       <h2>Add a name or correction</h2>
       <p>If you have reliable information about a person who died or was injured and who is not yet documented here, please use the <a href="#submit" data-view="submit" class="inline-link">Submit page</a>. All submissions are reviewed before publication. We do not publish information that could endanger survivors or family members.</p>
     </div>
-  </main><!-- /#memorialView -->
+  </section><!-- /#memorial -->
 
   <!-- ═══════════════════════════════════════════════════ -->
   <!-- SUBMIT VIEW                                         -->
   <!-- ═══════════════════════════════════════════════════ -->
-  <main class="wrap page-view page-section hidden" id="submitView" aria-labelledby="submitHeading">
+  <section class="wrap page-view" id="submit" aria-labelledby="submitHeading">
     <div class="page-intro">
       <div class="eyebrow muted">COMMUNITY SUBMISSIONS</div>
       <h1 id="submitHeading">Share what <em>you know.</em></h1>
@@ -1031,12 +1018,12 @@ nav a:hover, nav a.active { color:var(--ink); }
         <p class="small-note">This form does not yet have a backend configured. Until it does, please use the email address above to submit information.</p>
       </aside>
     </div>
-  </main><!-- /#submitView -->
+  </section><!-- /#submit -->
 
   <!-- ═══════════════════════════════════════════════════ -->
   <!-- ABOUT VIEW                                          -->
   <!-- ═══════════════════════════════════════════════════ -->
-  <main class="wrap page-view page-section hidden" id="aboutView" aria-labelledby="aboutHeading">
+  <section class="wrap page-view" id="about" aria-labelledby="aboutHeading">
     <div class="page-intro">
       <div class="eyebrow muted">WHO WE ARE</div>
       <h1 id="aboutHeading">News with a <em>purpose.</em></h1>
@@ -1082,7 +1069,9 @@ nav a:hover, nav a.active { color:var(--ink); }
       <strong>Placeholder content notice</strong>
       <p>Some community and editorial stories on this site are placeholder content for layout demonstration. They are clearly labelled. The Nasir Crisis timeline entries are based on verified external reporting and are source linked.</p>
     </div>
-  </main><!-- /#aboutView -->
+  </section><!-- /#about -->
+
+  </main><!-- /#homeView -->
 
   <!-- ═══════════════════════════════════════════════════ -->
   <!-- FOOTER                                              -->
@@ -1091,10 +1080,10 @@ nav a:hover, nav a.active { color:var(--ink); }
     <div class="wrap footer-top">
       <div class="footer-brand-col">
         <a class="brand brand-footer" href="#home" data-view="home" aria-label="Nasir Youth Community home">
-          <span class="brand-mark" aria-hidden="true">NY</span>
+          <img class="brand-logo" src="nasir_logo.svg" alt="">
           <span class="brand-text"><strong>NASIR</strong><small>YOUTH COMMUNITY</small></span>
         </a>
-        <p>Independent community journalism.<br>Nasir, Upper Nile State, South Sudan.</p>
+        <p>Independent community journalism.<span class="footer-location">Nasir, Upper Nile State, South Sudan.</span></p>
       </div>
       <nav class="footer-nav" aria-label="Footer navigation">
         <strong class="footer-heading">Explore</strong>
@@ -1580,29 +1569,19 @@ function renderListing() {
     : '<p class="no-results">No stories in this category yet.</p>';
 }
 
+function setActiveNavigation(activeItem) {
+  $$('.nav-link').forEach(link => {
+    const isCurrent = (link.dataset.nav || link.dataset.view) === activeItem;
+    link.classList.toggle('active', isCurrent);
+    if (isCurrent) link.setAttribute('aria-current', 'page');
+    else link.removeAttribute('aria-current');
+  });
+}
+
 function showView(view, options = {}) {
-  const views = {
-    home: '#homeView',
-    news: '#listingView',
-    investigations: '#listingView',
-    community: '#listingView',
-    about: '#aboutView',
-    memorial: '#memorialView',
-    submit: '#submitView'
-  };
-  const target = views[view] || views.home;
   const activeItem = options.activeItem || view;
-  const navLink = $(`.nav-link[data-nav="${activeItem}"], .nav-link[data-view="${activeItem}"]`);
-  const pageLabel = activeItem === 'timeline'
-    ? 'Nasir Timeline'
-    : navLink?.textContent.trim() || 'Home';
 
-  $$('.page-section').forEach(section => section.classList.add('hidden'));
-  $(target).classList.remove('hidden');
-  $('#pageContext').classList.toggle('hidden', activeItem === 'home');
-  $('#currentPageLabel').textContent = pageLabel;
-
-  if (target === '#listingView') {
+  if (['news', 'investigations', 'community'].includes(view)) {
     $('#listingView').dataset.view = view;
     const titles = {
       news: 'Latest <em>news.</em>',
@@ -1622,20 +1601,11 @@ function showView(view, options = {}) {
     renderListing();
   }
 
-  $$('.nav-link').forEach(link => {
-    const isCurrent = (link.dataset.nav || link.dataset.view) === activeItem;
-    link.classList.toggle('active', isCurrent);
-    if (isCurrent) link.setAttribute('aria-current', 'page');
-    else link.removeAttribute('aria-current');
-  });
+  setActiveNavigation(activeItem);
   $('#mainNav').classList.remove('open');
   $('#menuToggle').setAttribute('aria-expanded', 'false');
   $('#menuToggle').setAttribute('aria-label', 'Open navigation menu');
   $('.menu-toggle-label').textContent = 'Menu';
-  if (options.scroll !== false) {
-    const behavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
-    window.scrollTo({ top: 0, behavior });
-  }
 }
 
 function openArticle(id) {
@@ -1726,17 +1696,11 @@ function search(query) {
 function handleNavigationClick(event) {
   const link = event.target.closest('[data-view]');
   if (!link) return;
-  event.preventDefault();
   const view = link.dataset.view;
   const hash = link.getAttribute('href');
   showView(view, {
-    scroll: hash !== '#nasirTimeline',
     activeItem: hash === '#nasirTimeline' ? 'timeline' : view
   });
-  if (hash?.startsWith('#')) {
-    if (location.hash !== hash) history.pushState(null, '', hash);
-    if (hash === '#nasirTimeline') scrollElementIntoView($('#nasirTimeline'));
-  }
 }
 
 function handleSubmit(event) {
@@ -1757,15 +1721,14 @@ function initialise() {
   renderTimeline();
 
   const initialHash = location.hash.slice(1);
-  const initialView = ['news', 'investigations', 'community', 'about', 'memorial', 'submit'].includes(initialHash)
+  const initialView = ['home', 'news', 'investigations', 'community', 'about', 'memorial', 'submit'].includes(initialHash)
     ? initialHash
     : 'home';
   showView(initialView, {
-    scroll: false,
     activeItem: initialHash === 'nasirTimeline' ? 'timeline' : initialView
   });
-  if (initialHash === 'nasirTimeline') {
-    requestAnimationFrame(() => scrollElementIntoView($('#nasirTimeline')));
+  if (initialHash && $(`#${initialHash}`)) {
+    requestAnimationFrame(() => scrollElementIntoView($(`#${initialHash}`), { block: 'start' }));
   }
 
   $('#searchOpen').addEventListener('click', openSearch);
@@ -1788,6 +1751,25 @@ function initialise() {
     $('#menuToggle').setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
     $('.menu-toggle-label').textContent = open ? 'Close' : 'Menu';
   });
+
+  if ('IntersectionObserver' in window) {
+    const observedSections = new Map([
+      [$('#home'), 'home'],
+      [$('#nasirTimeline'), 'timeline'],
+      [$('#listingView'), null],
+      [$('#memorial'), 'memorial'],
+      [$('#submit'), 'submit'],
+      [$('#about'), 'about']
+    ]);
+    const sectionObserver = new IntersectionObserver(entries => {
+      const current = entries
+        .filter(entry => entry.isIntersecting)
+        .sort((first, second) => first.boundingClientRect.top - second.boundingClientRect.top)[0];
+      if (!current) return;
+      setActiveNavigation(observedSections.get(current.target) || $('#listingView').dataset.view || 'news');
+    }, { rootMargin: '-20% 0px -70% 0px' });
+    observedSections.forEach((view, section) => sectionObserver.observe(section));
+  }
 
   document.addEventListener('click', event => {
     handleNavigationClick(event);
@@ -1849,14 +1831,12 @@ function initialise() {
 
   window.addEventListener('hashchange', () => {
     const hash = location.hash.slice(1);
-    const view = ['news', 'investigations', 'community', 'about', 'memorial', 'submit'].includes(hash)
+    const view = ['home', 'news', 'investigations', 'community', 'about', 'memorial', 'submit'].includes(hash)
       ? hash
-      : 'home';
+      : hash === 'nasirTimeline' ? 'timeline' : 'home';
     showView(view, {
-      scroll: hash !== 'nasirTimeline',
       activeItem: hash === 'nasirTimeline' ? 'timeline' : view
     });
-    if (hash === 'nasirTimeline') scrollElementIntoView($('#nasirTimeline'));
   });
 }
 
